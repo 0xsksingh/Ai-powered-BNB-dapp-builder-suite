@@ -1,0 +1,37 @@
+{
+  "name": "bnb-nocode-website-builder",
+  "version": "0.0.1",
+  "description": "Nocode Web and Mobile Dapp Builder using daisyui, tailwind and grapejs !",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BNB-Nocode-Dev-Stack/bnb-nocode-dapp-builder"
+  },
+  "scripts": {
+    "start": "http-server ./dist/",
+    "build": "grapesjs-cli build",
+    "bump": "npm version patch -m 'Bump v%s'"
+  },
+  "keywords": [
+    "bnb-nocode-dapp-builder",
+    "daisyui",
+    "daisy",
+    "tailwind",
+    "drag-and-drop",
+    "website-builder",
+    "mobile-dapp-builder",
+    "app-builder",
+    "html-builder",
+    "html-editor",
+    "page-builder",
+    "site-generator",
+    "site-builder",
+    "grapesjs",
+    "ui-builder",
+    "no-code-bnb"
+  ],
+  "devDependencies": {
+    "grapesjs-cli": "^3.0.1"
+  },
+  "license": "MIT"
+}
