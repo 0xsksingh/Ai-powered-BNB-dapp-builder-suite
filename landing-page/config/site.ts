@@ -12,11 +12,14 @@ export const siteConfig = {
     {
       title:'Deploy',
       href:'/deploy'
+    },
+    {
+      title: 'No-Code-Builder',
+      href: 'https://no-code-bnb-dapp-builder-suite.vercel.app/'
     }
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    twitter: "https://twitter.com/abhishek-01k",
+    github: "https://github.com/shadcn/ui"
   },
 }
