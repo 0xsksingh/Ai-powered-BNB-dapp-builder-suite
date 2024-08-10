@@ -8,6 +8,15 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Bricolage_Grotesque } from 'next/font/google';
 import { Space_Mono } from 'next/font/google';
+import "@/styles/globals.css"
+import { Inter as FontSans } from "next/font/google"
+import { Toaster } from "@/components/ui/toaster"
+import Provider from "./provider"
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: {
@@ -49,18 +58,25 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
-        className={cn(
-          'antialiased',
-          fontHeading.variable,
-          fontBody.variable
-        )}
-      >
+          // className={cn(
+          //   // 'antialiased',
+          //   fontHeading.variable,
+          //   fontBody.variable
+          // )}
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable
+          )}
+        >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
-            </div>
-            <TailwindIndicator />
+            <Provider>
+              <div className="relative flex min-h-screen flex-col">
+                <SiteHeader />
+                <div className="flex-1">{children}</div>
+              </div>
+              <TailwindIndicator />
+            </Provider>
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
