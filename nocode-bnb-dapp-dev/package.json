@@ -33,5 +33,8 @@
   "devDependencies": {
     "grapesjs-cli": "^3.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
 }
