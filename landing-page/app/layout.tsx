@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Bricolage_Grotesque } from 'next/font/google';
+import { Space_Mono } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: {
@@ -29,17 +31,31 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
+const fontHeading = Bricolage_Grotesque({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+})
+
+const fontBody = Space_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+  weight: "700"
+})
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
+        className={cn(
+          'antialiased',
+          fontHeading.variable,
+          fontBody.variable
+        )}
+      >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
