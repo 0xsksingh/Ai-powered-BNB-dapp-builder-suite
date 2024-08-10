@@ -12,6 +12,7 @@ import { UserAuthForm } from "@/components/deployWebsite/userauth"
 const DeployPage = () => {
   return (
     <>
+    <div className="my-12">
       <GreenFieldContextProvider>
         <div className="md:hidden">
           <Image
@@ -50,6 +51,7 @@ const DeployPage = () => {
           </div>
         </div>
       </GreenFieldContextProvider>
+      </div>
     </>
   )
 }
