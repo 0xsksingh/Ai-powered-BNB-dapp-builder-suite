@@ -13,6 +13,8 @@ const RegisterDomain = () => {
 
   const checkAvailability = async () => {
     const signer = await getEthersSigner(config)
+    console.log("Signer>>>", signer)
+
     const register = new SIDRegister({ signer, chainId: 56 })
     const available = await register.getAvailable(domainName)
     setAvailability(available)
