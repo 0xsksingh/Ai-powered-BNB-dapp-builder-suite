@@ -1,31 +1,34 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { ethers } from "ethers";
-import SIDRegister from "@web3-name-sdk/register";
-import { useSigner } from "wagmi";
+import React, { useState } from "react"
+import SIDRegister from "@web3-name-sdk/register"
+import { ethers } from "ethers"
+
+import { config } from "@/config/config"
+import { getEthersSigner } from "@/config/eas-wagmi-utils"
 
 const RegisterDomain = () => {
-  const [domainName, setDomainName] = useState("");
-  const [availability, setAvailability] = useState(null);
-  
-  const { data: signer } = useSigner();
+  const [domainName, setDomainName] = useState("")
+  const [availability, setAvailability] = useState(null)
 
   const checkAvailability = async () => {
-    const register = new SIDRegister({ signer, chainId: 56 });
-    const available = await register.getAvailable(domainName);
-    setAvailability(available);
-  };
+    const signer = await getEthersSigner(config)
+    const register = new SIDRegister({ signer, chainId: 56 })
+    const available = await register.getAvailable(domainName)
+    setAvailability(available)
+  }
 
   const registerDomain = async () => {
-    if (!availability) return;
-    const register = new SIDRegister({ signer, chainId: 56 });
-    const price = await register.getRentPrice(domainName, 1);
+    if (!availability) return
+    const signer = await getEthersSigner(config)
+
+    const register = new SIDRegister({ signer, chainId: 56 })
+    const price = await register.getRentPrice(domainName, 1)
     await register.register(domainName, await signer.getAddress(), 1, {
       setPrimaryName: true,
-    });
-    alert(`${domainName}.bnb has been registered successfully!`);
-  };
+    })
+    alert(`${domainName}.bnb has been registered successfully!`)
+  }
 
   return (
     <div className="space-y-4">
@@ -52,8 +55,7 @@ const RegisterDomain = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default RegisterDomain;
- 
+export default RegisterDomain
