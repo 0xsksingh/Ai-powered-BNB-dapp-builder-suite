@@ -8,6 +8,8 @@ import { buttonVariants } from "@/components/ui/button"
 import DeployWebsite from "@/components/deployWebsite/DeployWebsite"
 import HowToDeploy from "@/components/deployWebsite/howToDeploy"
 import { UserAuthForm } from "@/components/deployWebsite/userauth"
+import RegisterDomain from "@/components/registerdomain"
+import ManageDomains from "@/components/bnbdomainmanagement"
 
 const DeployPage = () => {
   return (
@@ -34,7 +36,13 @@ const DeployPage = () => {
         <div className="flex">
           <div className="flex flex-1 justify-center items-center h-auto bg-zinc-900">
             <HowToDeploy />
+          <div className="flex-1 p-8">
+            <h1 className="text-4xl font-semibold mb-8">Deploy Your Website</h1>
+            <DeployWebsite />
+            <RegisterDomain />
+            <ManageDomains />
           </div>
+        </div>
           <div className="flex flex-1 h-full flex-col gap-12 lg:p-8">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-4xl font-semibold tracking-tight">
