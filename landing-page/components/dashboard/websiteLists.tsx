@@ -7,8 +7,8 @@ const WebsiteLists = ({ websiteLists }: { websiteLists: any[] }) => {
 
   return (
     <div className="flex flex-col">
-      {websiteLists.map((website) => (
-        <WebsiteCard websiteDetail={website} />
+      {websiteLists.map((website, index) => (
+        <WebsiteCard websiteDetail={website} key={index} />
       ))}
     </div>
   )

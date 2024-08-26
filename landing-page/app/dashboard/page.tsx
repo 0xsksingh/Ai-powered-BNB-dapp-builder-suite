@@ -18,24 +18,18 @@ const DashboardPage = () => {
 
   const [websitesDetails, setWebsiteDetails] = useState<any[]>([])
 
-  console.log("Connector >>", connector)
-
   useEffect(() => {
     if (!address && !connector) return
 
     const listWebsites = async () => {
-      console.log("Address and conenctor >>", address, connector)
 
       if (address && connector) {
         const spInfo = await selectSp()
-        console.log("spInfo", spInfo)
 
         try {
           const provider = await connector?.getProvider()
-          console.log("Provider>>>>", provider)
 
           const offChainData = await getOffchainAuthKeys(address, provider)
-          console.log("offChainData>>>>", offChainData)
           if (!offChainData) {
             toast({
               title: "Error",
@@ -48,11 +42,9 @@ const DashboardPage = () => {
             address: address,
             endpoint: spInfo.endpoint,
           })
-          console.log("Websites List >>>", websitesLists)
 
           if (websitesLists.code === 0 && websitesLists.body) {
             const websiteDetails = websitesLists.body
-            console.log("Website Details >>>", websiteDetails)
             setWebsiteDetails((prev) => [...websiteDetails])
           }
         } catch (error) {
