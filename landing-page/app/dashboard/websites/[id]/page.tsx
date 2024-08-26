@@ -19,6 +19,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useToast } from "@/components/ui/use-toast"
+import { GoLinkExternal } from "react-icons/go";
+import Link from "next/link"
 
 const WebsiteContentPage = ({ params }: { params: { id: string } }) => {
   const bucketName = params.id
@@ -110,7 +112,6 @@ const WebsiteContentPage = ({ params }: { params: { id: string } }) => {
     console.log("URLS >>>>", urls)
   }
 
-  getURL()
 
   const getDate = (timestamp: number) => {
     const updatedTime = new Date(timestamp * 1000)
@@ -230,8 +231,11 @@ const WebsiteContentPage = ({ params }: { params: { id: string } }) => {
             {objectDetails.map((object, index) => (
               <TableRow>
                 <TableCell className="font-medium">{index + 1}</TableCell>
-                <TableCell className="capitalize">
+                <TableCell className="flex items-center gap-2 capitalize">
                   {object.ObjectInfo.ObjectName}
+                  {object.ObjectInfo.ContentType === "text/html" && <Link href={`${BASE_URL}/${bucketName}/${object.ObjectInfo.ObjectName}`} target="_blank">
+                    <GoLinkExternal />
+                  </Link>}
                 </TableCell>
                 <TableCell className="capitalize">
                   {object.ObjectInfo.ContentType}
