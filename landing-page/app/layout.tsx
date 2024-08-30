@@ -12,6 +12,7 @@ import "@/styles/globals.css"
 import { Toaster } from "@/components/ui/toaster"
 
 import Provider from "./provider"
+import BTCProvider from "./BTCProvider"
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -52,11 +53,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Provider>
-              <div className="relative flex min-h-screen flex-col">
-                <SiteHeader />
-                <div className="flex-1">{children}</div>
-              </div>
-              <TailwindIndicator />
+              <BTCProvider>
+                <div className="relative flex min-h-screen flex-col">
+                  <SiteHeader />
+                  <div className="flex-1">{children}</div>
+                </div>
+                <TailwindIndicator />
+              </BTCProvider>
             </Provider>
             <Toaster />
           </ThemeProvider>

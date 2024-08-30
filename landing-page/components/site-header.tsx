@@ -7,6 +7,7 @@ import { useAccount } from "wagmi"
 import { siteConfig } from "@/config/site"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
+import ConnectBTC from "./ConnectBTC"
 
 export function SiteHeader() {
   const { isConnected } = useAccount()
@@ -15,6 +16,7 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
+          <ConnectBTC />
           <ConnectButton chainStatus="icon" />
           {isConnected && (
             <Link
