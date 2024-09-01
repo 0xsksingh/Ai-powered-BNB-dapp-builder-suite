@@ -11,10 +11,12 @@ import Storages from "@/components/demo/Storages";
 import Image from "next/image";
 import Showcasecover from "@/components/demo/Showcasecover";
 import AccountAbstraction from "@/components/demo/AccountAbstraction";
+import BTCConnect from "@/components/demo/BTCConnect";
 
 const tabs = [
-  { name: "Introduction", component: <Showcasecover />},
-  { name: "Account Abstraction", component: <AccountAbstraction />},
+  { name: "Introduction", component: <Showcasecover /> },
+  { name: "BTC Connect", component: <BTCConnect /> },
+  { name: "Account Abstraction", component: <AccountAbstraction /> },
   { name: "Wallet Connection", component: <WalletConnection /> },
   { name: "Contract Interaction", component: <ContractInteraction /> },
   { name: "User Authentication", component: <UserAuthentication /> },
@@ -62,11 +64,10 @@ const Home: NextPage = () => {
           <div className="mb-4 flex flex-col items-start mt-4 flex-nowrap overflow-x-auto w-full md:w-60  ">
             {tabs.map((tab) => (
               <button
-                className={`w-full text-left pl-3 py-2 flex items-center pr-6 border-l-2 font-medium transition-colors duration-200 ${
-                  tab.name === activeTab.name
-                    ? "font-bold text-white lg:border-l-2 border-blue-500"
-                    : "text-gray-400 border-gray-700"
-                } hover:text-white`}
+                className={`w-full text-left pl-3 py-2 flex items-center pr-6 border-l-2 font-medium transition-colors duration-200 ${tab.name === activeTab.name
+                  ? "font-bold text-white lg:border-l-2 border-blue-500"
+                  : "text-gray-400 border-gray-700"
+                  } hover:text-white`}
                 key={tab.name}
                 onClick={() => setActiveTab(tab)}
               >
